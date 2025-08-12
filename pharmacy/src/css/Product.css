@@ -1,0 +1,26 @@
+.product{
+    display: grid;
+    width: 14rem;
+    box-shadow:  0 2px 10px rgba(0, 0, 0, 0.15);
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    &:hover{
+        /* grows 5% */
+        transform: scale(1.05);
+    }
+}
+
+.product img{
+    width: 13rem;
+    height: 14rem;
+    justify-self: center;
+}
+
+.product h2{
+    color: white;
+}
+
+.product-price{
+    color: rgb(187, 89, 89);
+}

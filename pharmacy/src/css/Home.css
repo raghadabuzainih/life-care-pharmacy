@@ -1,0 +1,27 @@
+.home{
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+img{
+    width: 36rem;
+    height: 30rem;
+    opacity: 50%;
+    border-radius: 0 40%;
+}
+
+.home h1{
+    background-color: gray;
+}
+
+.home h1, .home h2{
+    text-shadow: 5px 2px black;
+    padding: 1rem;
+    border-radius: 0 30%;
+}
+
+.home h2{
+    margin-top: -2rem;
+}

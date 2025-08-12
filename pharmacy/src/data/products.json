@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Paracetamol 500mg",
+    "price": 5.99,
+    "category": "Medications and Treatment",
+    "image": "/images/medications-and-treatment/paracetamol.jpg",
+    "description": "Effective pain reliever and fever reducer."
+  },
+  {
+    "id": 2,
+    "name": "Vitamin C 1000mg",
+    "price": 12.5,
+    "category": "Vitamins and Supplements",
+    "image": "/images/vitamins-and-supplements/vitamin-c.jpeg",
+    "description": "Boosts immune system and overall health."
+  },
+  {
+    "id": 3,
+    "name": "Hand Sanitizer 250ml",
+    "price": 8.0,
+    "category": "Personal Care Products",
+    "image": "/images/personal-care-products/hand-sanitizer-250ml.jpg",
+    "description": "Kills 99.9% of germs and bacteria."
+  },
+  {
+    "id": 4,
+    "name": "Digital Thermometer",
+    "price": 15.99,
+    "category": "Medical Devices",
+    "image": "/images/medical-devices/digital-thermometer.jpg",
+    "description": "Fast and accurate body temperature measurement."
+  }
+]
