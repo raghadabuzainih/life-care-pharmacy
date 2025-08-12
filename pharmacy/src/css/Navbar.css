@@ -11,6 +11,6 @@ nav{
 nav a{
     color: white;
     &:hover{
-        color: gray;
+        color: rgb(231, 160, 53);
     }
 }

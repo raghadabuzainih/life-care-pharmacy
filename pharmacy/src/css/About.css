@@ -1,0 +1,29 @@
+.about {
+  margin: 40px auto;
+  padding: 20px 30px;
+  border-radius: 10px;
+  color: white;
+  width: 40rem;
+}
+
+span, .about h2{
+    color: rgb(231, 160, 53);
+    font-weight: bold;
+}
+
+h1 {
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+}
+
+h2 {
+  margin-top: 30px;
+  margin-bottom: 12px;
+  padding-left: 10px;
+}
+
+p {
+  line-height: 1.65;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+}

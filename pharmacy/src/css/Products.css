@@ -16,4 +16,7 @@
     background-color: rgba(0, 0, 0, 0.207);
     padding: .3rem .5rem;
     border-radius: 1rem;
+    &:hover{
+        color: rgb(231, 160, 53);
+    }
 }

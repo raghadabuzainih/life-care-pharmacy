@@ -16,6 +16,10 @@
   margin-bottom: 30px;
 }
 
+.contact strong{
+    color: rgb(231, 160, 53);
+}
+
 .contact form div{
     display: grid;
     gap: .4rem;
