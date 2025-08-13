@@ -23,10 +23,11 @@ export const Login = ({isLoggin}) => {
     useEffect(()=>{
         const timer = setTimeout(()=> {
             isLoggin(false)
+            navigate('/login')
         }, 10*60*1000) //after 10 minutes
 
         return () => clearTimeout(timer)
-    }, [isLoggin])
+    }, [isLoggin, navigate])
 
     return(
         <form className="login" onSubmit={handleSubmit}>
