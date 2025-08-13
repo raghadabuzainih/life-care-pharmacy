@@ -1,0 +1,18 @@
+.login{
+    display: grid;
+    gap: .4rem;
+    text-align: start;
+}
+
+.login div{
+    display: grid;
+    margin-bottom: 1rem;
+}
+
+.login input{
+    padding: .4rem;
+}
+
+.login label{
+    font-size: 1.3rem;
+}

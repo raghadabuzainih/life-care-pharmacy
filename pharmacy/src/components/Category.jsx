@@ -1,23 +1,20 @@
 import products from '../data/products.json'
 import { Product } from '../components/Product'
+import { useParams } from 'react-router-dom'
 
-export const Category = ({title}) => {
-    let items = products.filter(x => x.category == title)
-    let cards = items.map(({id, name, price, category, image, description}) => {
+export const Category = () => {
+    const { name } = useParams()
+    let items = products.filter(x => x['category-link'] == name)
+    let cards = items.map(item => {
         return <Product 
-                    key={id}
-                    name={name}
-                    price={price}
-                    category={category}
-                    image={image}
-                    description={description}
-                    index={id}
+                    key={item.id}
+                    product={item}
                />
     })
 
     return(
         <div>
-            <h2>{title}</h2>
+            <h2>{name}</h2>
             {cards}
         </div>
     )

@@ -5,9 +5,7 @@ import '../css/Item.css'
 
 export const Item = () => {
     const { id } = useParams()
-    //in Product.jsx -> <Link to={`/item/${index}`}> :
-    //index -> start from 1 
-    //in products -> index start from 0
+    //because id start from 1 & to access index in array --> id-1
     let clickedItem = products[id-1]
 
     return(
