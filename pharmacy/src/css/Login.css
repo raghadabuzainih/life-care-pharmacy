@@ -16,3 +16,8 @@
 .login label{
     font-size: 1.3rem;
 }
+
+.login p{
+    margin-top: 0;
+    color: rgb(249, 91, 91);
+}
