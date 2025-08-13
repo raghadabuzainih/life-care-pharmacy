@@ -6,7 +6,7 @@ export const Home = () => {
             <img src="/images/pharmacy.jpg" alt="photo-of-pharmacy" />
             <div className="headers">
                 <h1>LifeCare Pharmacy</h1>
-                <h2>Welcome To Our Community</h2>
+                <h2>Welcome To <span>Our Community</span></h2>
             </div>
         </div>
     )
