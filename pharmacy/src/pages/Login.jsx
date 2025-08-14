@@ -42,7 +42,7 @@ export const Login = ({isLoggin}) => {
 
     return(
         <form className="login" onSubmit={handleSubmit}>
-            <h1>Log in Form</h1>
+            <h2>Log in Form</h2>
             <div className="info">
                     <label htmlFor="email">Email</label>
                     <input type="email" id="email" placeholder="enter your email" name="email" required />

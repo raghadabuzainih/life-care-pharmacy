@@ -4,20 +4,21 @@
     text-align: start;
 }
 
+.login h2{
+    text-align: center;
+}
+
 .login div{
     display: grid;
-    margin-bottom: 1rem;
+    margin-bottom: .4rem;
 }
 
 .login input{
     padding: .4rem;
 }
 
-.login label{
-    font-size: 1.3rem;
-}
-
 .login p{
     margin-top: 0;
     color: rgb(249, 91, 91);
+    font-size: small;
 }

@@ -1,0 +1,33 @@
+.signup{
+    text-align: start;
+}
+
+.signup h2{
+    text-align: center;
+}
+
+.field{
+    display: grid;
+    margin-bottom: .4rem;
+}
+
+.signup input, .signup select{
+    padding: .4rem;
+}
+
+.full-name{
+    display: flex;
+    justify-content: space-between;
+}
+
+.signup button{
+    width: 100%;
+    margin-top: .4rem;
+}
+
+.error{
+    font-size: small;
+    color: rgb(249, 91, 91);
+    margin-top: 0;
+    margin-bottom: 0;
+}

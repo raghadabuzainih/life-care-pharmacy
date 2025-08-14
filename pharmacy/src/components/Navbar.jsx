@@ -11,7 +11,11 @@ export const Navbar = () => {
                     <Link to="/products">Products</Link>
                     <Link to="/contact">Contact</Link>
                 </div>
-                <Link to="/login">Login</Link>
+                <div>
+                    <Link to="/login">Login</Link>
+                    /
+                    <Link to="/signup">Signup</Link>
+                </div>
             </nav>
             <Outlet />
         </>

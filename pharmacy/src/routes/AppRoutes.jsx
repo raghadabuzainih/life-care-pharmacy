@@ -6,9 +6,10 @@ import { About } from '../pages/About'
 import { Products } from '../pages/Products'
 import { Contact } from '../pages/Contact'
 import { Item } from '../pages/Item'
-import { Login } from '../pages/Login'
-import { Error } from '../pages/Error'
 import { Category } from "../components/Category"
+import { Login } from '../pages/Login'
+import { Signup } from "../pages/Signup"
+import { Error } from '../pages/Error'
 
 export const AppRoutes = () => {
   const [isLoggin, setIsLoggin] = React.useState(false)
@@ -26,6 +27,7 @@ export const AppRoutes = () => {
           <Route path='/item/:id' element={isLoggin ? <Item /> : <Navigate to="/login"  state={{from: location}} replace/>}/>
           <Route path='/category/:name' element={isLoggin ? <Category /> : <Navigate to="/login" state={{from: location}} replace/>}/>
           <Route path='/login' element={<Login isLoggin={setIsLoggin}/>} />
+          <Route path="/signup" element={<Signup />} />
           <Route path='*' element={<Error />} />
         </Route>
       </Routes>
