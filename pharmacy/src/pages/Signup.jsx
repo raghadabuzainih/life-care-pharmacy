@@ -3,7 +3,7 @@ import * as Yup from "yup"
 import '../css/Signup.css'
 import {useNavigate} from "react-router-dom"
 
-export const Signup = () => {
+export const Signup = ({isLoggin}) => {
     const navigate = useNavigate()
 
     const initialValues = {
@@ -43,6 +43,7 @@ export const Signup = () => {
     })
 
     const handleSubmit = () => {
+        isLoggin(true)
         navigate('/')
     }
 

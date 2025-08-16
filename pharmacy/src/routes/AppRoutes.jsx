@@ -19,7 +19,7 @@ export const AppRoutes = () => {
 
   return (
       <Routes>
-        <Route path='/' element={<Navbar />}>
+        <Route path='/' element={<Navbar isLoggin={isLoggin} setIsLoggin={setIsLoggin}/>}>
           <Route index element={<Home />}/>
           <Route path='about' element={<About />}/>
           <Route path='products' element={isLoggin ? <Products /> : <Navigate to="/login" state={{from: location}} replace/>}/>
@@ -27,7 +27,7 @@ export const AppRoutes = () => {
           <Route path='/item/:id' element={isLoggin ? <Item /> : <Navigate to="/login"  state={{from: location}} replace/>}/>
           <Route path='/category/:name' element={isLoggin ? <Category /> : <Navigate to="/login" state={{from: location}} replace/>}/>
           <Route path='/login' element={<Login isLoggin={setIsLoggin}/>} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/signup" element={<Signup isLoggin={setIsLoggin}/>} />
           <Route path='*' element={<Error />} />
         </Route>
       </Routes>

@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"
 import products from '../data/products.json'
 import '../css/Item.css'
 
+//Item.jsx --> when clicking on item to show more info & grow image
+
 export const Item = () => {
     const { id } = useParams()
     //because id start from 1 & to access index in array --> id-1
