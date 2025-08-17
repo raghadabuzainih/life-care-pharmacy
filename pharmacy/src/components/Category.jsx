@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom'
 export const Category = () => {
     const { name } = useParams()
     let items = products.filter(x => x['category-link'] == name)
+    //select category name enough from one product
+    let categoryName = items[0]['category']
     let cards = items.map(item => {
         return <Product 
                     key={item.id}
@@ -14,7 +16,7 @@ export const Category = () => {
 
     return(
         <div>
-            <h2>{name}</h2>
+            <h2>{categoryName}</h2>
             {cards}
         </div>
     )
