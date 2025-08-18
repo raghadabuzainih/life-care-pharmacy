@@ -17,7 +17,7 @@
 
 .full-name{
     display: flex;
-    justify-content: space-between;
+    gap: 1rem;
 }
 
 .signup button{
@@ -30,4 +30,5 @@
     color: rgb(249, 91, 91);
     margin-top: 0;
     margin-bottom: 0;
+    white-space: pre-line;
 }

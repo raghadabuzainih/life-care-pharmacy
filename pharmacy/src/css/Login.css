@@ -1,4 +1,4 @@
-.alert-login{
+.alert-login, .login a{
     color: rgb(249, 91, 91);
 }
 
@@ -6,10 +6,6 @@
     display: grid;
     gap: .4rem;
     text-align: start;
-}
-
-.login a{
-    color: white;
 }
 
 .login h2{
@@ -25,9 +21,17 @@
     padding: .4rem;
 }
 
-.login button{
+.log-button{
     width: 100%;
     margin-top: .4rem;
+}
+
+.password-icon{
+    position: relative;
+    font-size: small;
+    top: -2.1rem;
+    background-color: transparent;
+    justify-self: end;
 }
 
 .error{

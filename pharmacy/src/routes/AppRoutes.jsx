@@ -16,18 +16,21 @@ export const AppRoutes = () => {
   //to get the previous page
   //when click to anauthorized page & redirected to login page
   const location = useLocation()
+  const [lang, setLang] = React.useState('') //wanna pass lang to products.jsx, category.jsx, item.jsx
+  //to make products appear in the same language
+  //note --> data folder contain products.json in ar & en
 
   return (
       <Routes>
         <Route path='/' element={<Navbar isLoggin={isLoggin} setIsLoggin={setIsLoggin}/>}>
           <Route index element={<Home />}/>
           <Route path='about' element={<About />}/>
-          <Route path='products' element={isLoggin ? <Products /> : <Navigate to="/login" state={{from: location}} replace/>}/>
+          <Route path='products' element={isLoggin ? <Products lang={lang}/> : <Navigate to="/login" state={{from: location}} replace/>}/>
           <Route path='contact' element={isLoggin ? <Contact /> : <Navigate to="/login"  state={{from: location}} replace/>}/>
-          <Route path='/item/:id' element={isLoggin ? <Item /> : <Navigate to="/login"  state={{from: location}} replace/>}/>
-          <Route path='/category/:name' element={isLoggin ? <Category /> : <Navigate to="/login" state={{from: location}} replace/>}/>
+          <Route path='/item/:id' element={isLoggin ? <Item lang={lang}/> : <Navigate to="/login"  state={{from: location}} replace/>}/>
+          <Route path='/category/:name' element={isLoggin ? <Category lang={lang}/> : <Navigate to="/login" state={{from: location}} replace/>}/>
           <Route path='/login' element={<Login isLoggin={setIsLoggin}/>} />
-          <Route path="/signup" element={<Signup isLoggin={setIsLoggin}/>} />
+          <Route path="/signup" element={<Signup isLoggin={setIsLoggin} setLanguage={setLang}/>} />
           <Route path='*' element={<Error />} />
         </Route>
       </Routes>

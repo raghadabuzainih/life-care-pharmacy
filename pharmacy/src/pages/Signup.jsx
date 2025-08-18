@@ -2,14 +2,24 @@ import {Formik, Form, Field, ErrorMessage} from "formik"
 import * as Yup from "yup"
 import '../css/Signup.css'
 import {useNavigate} from "react-router-dom"
+import users from '../data/users.json'
+import { useTranslation } from "react-i18next"
 
-export const Signup = ({isLoggin}) => {
+export const Signup = ({isLoggin, setLanguage}) => {
     const navigate = useNavigate()
+    const {t, i18n} = useTranslation()
+
+    const changeLanguage = (event) => {
+        const language = event.currentTarget.value
+        i18n.changeLanguage(language)
+        setLanguage(language)
+        document.body.dir = language == 'ar' ? 'rtl' : 'ltr'
+    }
 
     const initialValues = {
         'first-name': "",
         'last-name': "",
-        'date-of-birth': "2025-08-14",
+        'date-of-birth': "2008-01-01",
         gender: "",
         email: "",
         password: "",
@@ -21,26 +31,33 @@ export const Signup = ({isLoggin}) => {
     }
 
     const validationSchema = Yup.object({
-        'first-name': Yup.string().required("First name is required"),
-        'last-name': Yup.string().required("Last name is required"),
-        'date-of-birth': Yup.date().required("Date of birth is required"),
-        gender: Yup.string().required("Gender is required"),
-        email: Yup.string().email("Invalid email").required("Email is required"),
-        password: Yup.string().min(6, "At least 6 characters").required("Password is required"),
+        'first-name': Yup.string().required(t("validation.firstName")),
+        'last-name': Yup.string().required(t("validation.lastName")),
+        'date-of-birth': Yup.date().required(t("validation.dob")),
+        gender: Yup.string().required(t("validation.gender")),
+        email: Yup.string()
+            .email(t("validation.emailInvalid"))
+            .test('repeteadEmail', t("validation.emailExists"), 
+            (value)=> value && (users.find(user => user.email == value) == undefined))
+            .required(t("validation.emailRequired")),
+        password: Yup.string()
+            .min(8, t("validation.passwordMin"))
+            .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}$/,t("validation.passwordPattern"))
+            .required(t("validation.passwordRequired")),
         'confirm-password': Yup.string()
-            .oneOf([Yup.ref("password")], "Passwords doesn't match")
-            .required("Confirm password is required"),
+            .oneOf([Yup.ref("password")], t("validation.passwordsNotMatch"))
+            .required(t("validation.confirmPassword")),
         'phone-number': Yup.string()
-            .matches(/^[0-9]+$/, "Phone number must contain only digits")
-            .length(11, "Phone number must be exactly 11 digits")
-            .required("Phone number is required"),
+            .matches(/^[0-9]+$/, t("validation.phoneDigits"))
+            .length(10, t("validation.phoneLength"))
+            .required(t("validation.phoneRequired")),
         'personal-photo': Yup.mixed()
-            .required("Photo is required")
-            .test("fileFormat", "Only PNG, JPEG, JPG are allowed", (value) =>
-            value && ["image/png", "image/jpeg", "image/jpg"].includes(value.type)
-            ),
-        agree: Yup.boolean().oneOf([true], "You must accept the terms"),
-    })
+            .required(t("validation.photoRequired"))
+            .test("fileFormat", t("validation.photoFormat"), (value) => 
+                value && ["image/png", "image/jpeg", "image/jpg"].includes(value.type)),
+        agree: Yup.boolean().oneOf([true], t("validation.agree"))
+})
+
 
     const handleSubmit = () => {
         isLoggin(true)
@@ -49,7 +66,7 @@ export const Signup = ({isLoggin}) => {
 
     return(
         <div className='signup'>
-            <h2>Sign up Form</h2>
+            <h2>{t("signup.title")}</h2>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -59,57 +76,57 @@ export const Signup = ({isLoggin}) => {
                 <Form>
                     <div className="full-name">
                         <div className='field'>
-                            <label htmlFor="first-name">First Name:</label>
+                            <label htmlFor="first-name">{t("signup.firstName")}</label>
                             <Field type="text" id="first-name" name="first-name"/>
                             <ErrorMessage name="first-name" component="p" className="error"/>
                         </div>
                         <div className='field'>
-                            <label htmlFor="last-name">Last Name:</label>
+                            <label htmlFor="last-name">{t("signup.lastName")}</label>
                             <Field type="text" id="last-name" name="last-name"/>
                             <ErrorMessage name="last-name" component="p" className="error" />
                         </div>
                     </div>
                     <div className='field'>
-                        <label htmlFor="date-of-birth">Date Of Birth:</label>
-                        <Field type="date" id="date-of-birth" name="date-of-birth"/>
+                        <label htmlFor="date-of-birth">{t("signup.dob")}</label>
+                        <Field type="date" id="date-of-birth" name="date-of-birth" min='1965-01-01' max='2008-01-01'/>
                         <ErrorMessage name="date-of-birth" component="p" className="error" />
                     </div>
                     <div>
-                        <label htmlFor="gender">Gender:</label>
-                        <Field type="radio" name="gender" id="male" value="male"/>Male
-                        <Field type="radio" name="gender" id="female" value="female"/>Female
+                        <label htmlFor="gender">{t("signup.gender")}</label>
+                        <Field type="radio" name="gender" id="male" value="male"/>{t("signup.male")}
+                        <Field type="radio" name="gender" id="female" value="female"/>{t("signup.female")}
                         <ErrorMessage name="gender" component="p" className="error" />
                     </div>
                     <div className='field'>
-                        <label htmlFor="email">Email:</label>
-                        <Field type="text" name="email" id="email" placeholder="example@gmail.com"/>
+                        <label htmlFor="email">{t("signup.email")}</label>
+                        <Field type="text" name="email" id="email" placeholder={t("signup.emailPlaceholder")}/>
                         <ErrorMessage name="email" component="p" className="error" />
                     </div>
                     <div className='field'>
-                        <label htmlFor="password">Password:</label>
-                        <Field type="text" name="password" id="password" placeholder="must contain 6 characters at least"/>
+                        <label htmlFor="password">{t("signup.password")}</label>
+                        <Field type="password" name="password" id="password" placeholder={t("signup.passwordPlaceholder")}/>
                         <ErrorMessage name="password" component="p" className="error" />
                     </div>
                     <div className='field'>
-                        <label htmlFor="confirm-password">Confirm Password:</label>
-                        <Field type="text" name="confirm-password" id="confirm-password" />
+                        <label htmlFor="confirm-password">{t("signup.confirmPassword")}</label>
+                        <Field type="password" name="confirm-password" id="confirm-password" />
                         <ErrorMessage name="confirm-password" component="p" className="error" />
                     </div>
                     <div className='field'>
-                        <label htmlFor="phone-number">Phone Number:</label>
-                        <Field type="text" name="phone-number" id="phone-number" placeholder="must contain 11 digits"/>
+                        <label htmlFor="phone-number">{t("signup.phone")}</label>
+                        <Field type="text" name="phone-number" id="phone-number" placeholder={t("signup.phonePlaceholder")}/>
                         <ErrorMessage name="phone-number" component="p" className="error" />
                     </div>
                     <div className='field'>
-                        <label htmlFor="language">Select Your Language:</label>
-                        <Field as="select" name="language" id="language">
-                            <option value="arabic">Arabic</option>
-                            <option value="english">English</option>
+                        <label htmlFor="language">{t("signup.language")}</label>
+                        <Field as="select" name="language" id="language" onClick={changeLanguage}>
+                            <option value="en" className="selected-lang">{t("signup.english")}</option>
+                            <option value="ar" className="selected-lang">{t("signup.arabic")}</option>
                         </Field>
                         <ErrorMessage name="language" component="p" className="error" />
                     </div>
                     <div>
-                        <label htmlFor="personal-photo">Select a photo:</label>
+                        <label htmlFor="personal-photo">{t("signup.photo")}</label>
                         <input
                             type="file"
                             id="personal-photo"
@@ -120,10 +137,10 @@ export const Signup = ({isLoggin}) => {
                     </div>
                     <div>
                         <Field type="checkbox" name="agree" id="agree" />
-                        <label htmlFor="agree">I agree to the terms and conditions of use.</label>
+                        <label htmlFor="agree">{t("signup.agree")}</label>
                         <ErrorMessage name="agree" component="p" className="error" />
                     </div>
-                    <button type='submit'>Sign Up</button>
+                    <button type='submit'>{t("signup.submit")}</button>
                 </Form>
             )}
             </Formik>

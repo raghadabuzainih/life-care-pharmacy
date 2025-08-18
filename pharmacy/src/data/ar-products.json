@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "باراسيتامول 500ملغ",
+    "price": 5.99,
+    "category": "الأدوية والعلاجات",
+    "category-link": "medications-and-treatment",
+    "image": "/images/medications-and-treatment/paracetamol.jpg",
+    "description": "مسكن فعال للآلام وخافض للحرارة."
+  },
+  {
+    "id": 2,
+    "name": "فيتامين سي 1000ملغ",
+    "price": 12.5,
+    "category": "الفيتامينات والمكملات",
+    "category-link": "vitamins-and-supplements",
+    "image": "/images/vitamins-and-supplements/vitamin-c.jpeg",
+    "description": "يعزز الجهاز المناعي والصحة العامة."
+  },
+  {
+    "id": 3,
+    "name": "معقم يدين 250مل",
+    "price": 8.0,
+    "category": "منتجات العناية الشخصية",
+    "category-link": "personal-care-products",
+    "image": "/images/personal-care-products/hand-sanitizer-250ml.jpg",
+    "description": "يقضي على 99.9٪ من الجراثيم والبكتيريا."
+  },
+  {
+    "id": 4,
+    "name": "ترمومتر رقمي",
+    "price": 15.99,
+    "category": "الأجهزة الطبية",
+    "category-link": "medical-devices",
+    "image": "/images/medical-devices/digital-thermometer.jpg",
+    "description": "قياس درجة حرارة الجسم بسرعة ودقة."
+  }
+]

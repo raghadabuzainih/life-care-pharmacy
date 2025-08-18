@@ -1,0 +1,106 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "contact": "Contact",
+    "login": "Login",
+    "signup": "Signup",
+    "logout": "Logout"
+  },
+  "home": {
+    "title": "LifeCare Pharmacy",
+    "welcome": "Welcome To",
+    "community": "Our Community"
+  },
+  "about": {
+    "title": "About Us",
+    "pharmacyName": "LifeCare Pharmacy",
+    "description": "is dedicated to providing high-quality pharmaceutical services and healthcare products to our community.",
+    "established": "Since our establishment in 2005, we have been committed to ensuring our customers receive the best medications, advice, and care.",
+    "missionTitle": "Our Mission",
+    "missionDescription": "To improve the health and wellbeing of our customers by offering reliable medicines and personalized pharmaceutical consultations.",
+    "whyChooseTitle": "Why Choose Us?",
+    "whyChooseDescription": "We pride ourselves on our experienced pharmacists, friendly staff, and commitment to community health."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "infoTitle": "Contact Information",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Working Hours",
+    "officeAddress": "123 Main St, Ramallah, Palestine",
+    "workingHours": "Sat - Thu: 8:00 AM - 10:00 PM",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "enter your full name",
+      "phone": "Phone Number",
+      "phonePlaceholder": "enter your phone number",
+      "email": "Email",
+      "emailPlaceholder": "enter your email",
+      "message": "Message",
+      "messagePlaceholder": "Write your message here...",
+      "submit": "Send Message"
+    }
+  },
+  "login": {
+    "title": "Log in Form",
+    "mustLogin": "You must login first",
+    "email": "Email:",
+    "password": "Password:",
+    "noAccount": "Don't have account?",
+    "register": "Register",
+    "submit": "Log in",
+    "validation": {
+      "emailInvalid": "Invalid email",
+      "emailNotExist": "Email not exist",
+      "emailRequired": "Email is required",
+      "passwordIncorrect": "Incorrect password",
+      "passwordRequired": "Password is required"
+    }
+  },
+  "signup": {
+    "title": "Sign up Form",
+    "firstName": "First Name:",
+    "lastName": "Last Name:",
+    "dob": "Date Of Birth:",
+    "gender": "Gender:",
+    "male": "Male",
+    "female": "Female",
+    "email": "Email:",
+    "emailPlaceholder": "example@gmail.com",
+    "password": "Password:",
+    "passwordPlaceholder": "must contain 8 characters at least",
+    "confirmPassword": "Confirm Password:",
+    "phone": "Phone Number:",
+    "phonePlaceholder": "must contain 10 digits",
+    "language": "Select Your Language:",
+    "arabic": "Arabic",
+    "english": "English",
+    "photo": "Select a photo:",
+    "agree": "I agree to the terms and conditions of use.",
+    "submit": "Sign Up"
+  },
+  "validation": {
+    "firstName": "First name is required",
+    "lastName": "Last name is required",
+    "dob": "Date of birth is required",
+    "gender": "Gender is required",
+    "emailInvalid": "Invalid email",
+    "emailExists": "Email exists, log in",
+    "emailRequired": "Email is required",
+    "passwordMin": "At least 8 characters",
+    "passwordPattern": "Password must contain at least: 1 uppercase, 1 lowercase, 1 number and 1 special character",
+    "passwordRequired": "Password is required",
+    "passwordsNotMatch": "Passwords don't match",
+    "confirmPassword": "Confirm password is required",
+    "phoneDigits": "Phone number must contain only digits",
+    "phoneLength": "Phone number must be exactly 10 digits",
+    "phoneRequired": "Phone number is required",
+    "photoRequired": "Photo is required",
+    "photoFormat": "Only PNG, JPEG, JPG are allowed",
+    "agree": "You must accept the terms"
+  },
+  "error" : "Error.. Page Not Found :("
+}
