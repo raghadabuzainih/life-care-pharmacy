@@ -22,7 +22,7 @@ export const Contact = () => {
                     </div>
                     <div>
                         <label htmlFor="phone">{t("contact.form.phone")}</label>
-                        <input type="tel" id="phone" placeholder={t("contact.form.phonePlaceholder")} required />
+                        <input type="text" id="phone" placeholder={t("contact.form.phonePlaceholder")} required />
                     </div>
                     <div>
                         <label htmlFor="email">{t("contact.form.email")}</label>

@@ -6,9 +6,6 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
 }
 
 a {
@@ -29,7 +26,7 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+button[type="submit"] {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -40,10 +37,27 @@ button {
   cursor: pointer;
   transition: 0.25s;
 }
-button:hover {
+button[type="submit"]:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+button[type="submit"]:focus,
+button[type="submit"]:focus-visible {
   outline: 4px auto;
+}
+
+.password-icon{
+    position: relative;
+    top: -1.5rem;
+    font-size: small;
+    background-color: transparent;
+    justify-self: end;
+    border: none;
+    cursor: pointer;
+}
+
+.error{
+    font-size: small;
+    color: rgb(249, 91, 91);
+    margin-top: 0;
+    margin-bottom: 0;
 }

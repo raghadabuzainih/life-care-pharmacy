@@ -2,11 +2,11 @@ import { Link, Outlet } from "react-router-dom"
 import '../css/Navbar.css'
 import { useTranslation } from "react-i18next"
 
-export const Navbar = ({isLoggin, setIsLoggin}) => {
+export const Navbar = ({isLoggedIn, setIsLoggedIn}) => {
     const {t} = useTranslation()
 
     function handleLogout(){
-        setIsLoggin(false) //to prevent enter protected routes like products..
+        setIsLoggedIn(false) //to prevent enter protected routes like products..
     }
 
     return(
@@ -19,7 +19,7 @@ export const Navbar = ({isLoggin, setIsLoggin}) => {
                     <Link to="/contact">{t("navbar.contact")}</Link>
                 </div>
                 {
-                    isLoggin ?
+                    isLoggedIn ?
                     <Link onClick={handleLogout} to="/login">{t("navbar.logout")}</Link>
                     :
                     <div>

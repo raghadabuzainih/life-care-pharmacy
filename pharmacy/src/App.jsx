@@ -8,6 +8,8 @@ import './data/i18n'
 const root = createRoot(document.getElementById('root'))
 
 export const App = () => {
+  const langaue = localStorage.getItem('language')
+  document.body.dir = langaue == 'ar' ? 'rtl' : 'ltr'
   return (
     <BrowserRouter>
       <AppRoutes />

@@ -1,14 +1,9 @@
-.products{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
 .categories{
     display: flex;
     gap: 1rem;
     justify-content: center;
     margin-bottom: 2rem;
+    margin-top: 5rem;
 }
 
 .categories a{
@@ -19,4 +14,11 @@
     &:hover{
         color: rgb(231, 160, 53);
     }
+}
+
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
 }

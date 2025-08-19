@@ -4,15 +4,17 @@ import '../css/Signup.css'
 import {useNavigate} from "react-router-dom"
 import users from '../data/users.json'
 import { useTranslation } from "react-i18next"
+import { FieldError } from "../components/FieldError"
+import React from "react"
 
-export const Signup = ({isLoggin, setLanguage}) => {
+export const Signup = ({setIsLoggedIn}) => {
     const navigate = useNavigate()
     const {t, i18n} = useTranslation()
 
     const changeLanguage = (event) => {
         const language = event.currentTarget.value
         i18n.changeLanguage(language)
-        setLanguage(language)
+        localStorage.setItem('language', language)
         document.body.dir = language == 'ar' ? 'rtl' : 'ltr'
     }
 
@@ -58,9 +60,19 @@ export const Signup = ({isLoggin, setLanguage}) => {
         agree: Yup.boolean().oneOf([true], t("validation.agree"))
 })
 
+    const [passwordIsHidden, setPasswordIsHidden] = React.useState(true)
+    const [confirmedPasswordIsHidden, setConfirmedPasswordIsHidden] = React.useState(true)
+
+    function showOrHidePassword(){
+        setPasswordIsHidden(old => !old)   
+    }
+
+    function showOrHideConfirmedPassword(){
+        setConfirmedPasswordIsHidden(old => !old)   
+    }
 
     const handleSubmit = () => {
-        isLoggin(true)
+        setIsLoggedIn(true)
         navigate('/')
     }
 
@@ -75,48 +87,63 @@ export const Signup = ({isLoggin, setLanguage}) => {
             {({ setFieldValue }) => (
                 <Form>
                     <div className="full-name">
-                        <div className='field'>
-                            <label htmlFor="first-name">{t("signup.firstName")}</label>
-                            <Field type="text" id="first-name" name="first-name"/>
-                            <ErrorMessage name="first-name" component="p" className="error"/>
-                        </div>
-                        <div className='field'>
-                            <label htmlFor="last-name">{t("signup.lastName")}</label>
-                            <Field type="text" id="last-name" name="last-name"/>
-                            <ErrorMessage name="last-name" component="p" className="error" />
-                        </div>
+                        <FieldError 
+                            divClass='field' 
+                            name='first-name' 
+                            label={t("signup.firstName")}
+                            type="text"
+                        />
+                        <FieldError 
+                            divClass='field' 
+                            name='last-name' 
+                            label={t("signup.lastName")}
+                            type="text"
+                        />
                     </div>
-                    <div className='field'>
-                        <label htmlFor="date-of-birth">{t("signup.dob")}</label>
-                        <Field type="date" id="date-of-birth" name="date-of-birth" min='1965-01-01' max='2008-01-01'/>
-                        <ErrorMessage name="date-of-birth" component="p" className="error" />
-                    </div>
+                    <FieldError 
+                        divClass= 'field' 
+                        name= 'date-of-birth' 
+                        label= {t("signup.dob")}
+                        type= "date"
+                        min= '1965-01-01'
+                        max='2008-01-01'
+                    />
                     <div>
                         <label htmlFor="gender">{t("signup.gender")}</label>
                         <Field type="radio" name="gender" id="male" value="male"/>{t("signup.male")}
                         <Field type="radio" name="gender" id="female" value="female"/>{t("signup.female")}
                         <ErrorMessage name="gender" component="p" className="error" />
                     </div>
-                    <div className='field'>
-                        <label htmlFor="email">{t("signup.email")}</label>
-                        <Field type="text" name="email" id="email" placeholder={t("signup.emailPlaceholder")}/>
-                        <ErrorMessage name="email" component="p" className="error" />
-                    </div>
+                    <FieldError 
+                        divClass= 'field' 
+                        name= 'email' 
+                        label= {t("signup.email")}
+                        type= "text"
+                        placeholder= {t("signup.emailPlaceholder")}
+                    />
                     <div className='field'>
                         <label htmlFor="password">{t("signup.password")}</label>
-                        <Field type="password" name="password" id="password" placeholder={t("signup.passwordPlaceholder")}/>
+                        <Field type={passwordIsHidden ? 'password' : 'text'} name="password" id="password" placeholder={t("signup.passwordPlaceholder")}/>
+                        <button className='password-icon' onClick={showOrHidePassword}>
+                            {passwordIsHidden ? <i className="fa-solid fa-eye"></i> : <i className="fa-solid fa-eye-slash"></i>}
+                        </button>
                         <ErrorMessage name="password" component="p" className="error" />
                     </div>
                     <div className='field'>
                         <label htmlFor="confirm-password">{t("signup.confirmPassword")}</label>
-                        <Field type="password" name="confirm-password" id="confirm-password" />
+                        <Field type={confirmedPasswordIsHidden ? 'password' : 'text'} name="confirm-password" id="confirm-password" />
+                        <button className='password-icon' onClick={showOrHideConfirmedPassword}>
+                            {confirmedPasswordIsHidden ? <i className="fa-solid fa-eye"></i> : <i className="fa-solid fa-eye-slash"></i>}
+                        </button>
                         <ErrorMessage name="confirm-password" component="p" className="error" />
                     </div>
-                    <div className='field'>
-                        <label htmlFor="phone-number">{t("signup.phone")}</label>
-                        <Field type="text" name="phone-number" id="phone-number" placeholder={t("signup.phonePlaceholder")}/>
-                        <ErrorMessage name="phone-number" component="p" className="error" />
-                    </div>
+                    <FieldError 
+                        divClass= 'field' 
+                        name= 'phone-number' 
+                        label= {t("signup.phone")}
+                        type= "text"
+                        placeholder= {t("signup.phonePlaceholder")}
+                    />
                     <div className='field'>
                         <label htmlFor="language">{t("signup.language")}</label>
                         <Field as="select" name="language" id="language" onClick={changeLanguage}>
@@ -135,12 +162,12 @@ export const Signup = ({isLoggin, setLanguage}) => {
                         />
                         <ErrorMessage name="personal-photo" component="p" className="error" />
                     </div>
-                    <div>
-                        <Field type="checkbox" name="agree" id="agree" />
-                        <label htmlFor="agree">{t("signup.agree")}</label>
-                        <ErrorMessage name="agree" component="p" className="error" />
-                    </div>
-                    <button type='submit'>{t("signup.submit")}</button>
+                    <FieldError 
+                        name= 'agree' 
+                        label= {t("signup.agree")}
+                        type= "checkbox"
+                    />
+                    <button className="sign-button" type='submit'>{t("signup.submit")}</button>
                 </Form>
             )}
             </Formik>

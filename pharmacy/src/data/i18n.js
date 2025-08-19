@@ -15,10 +15,13 @@ const resources = {
 
 i18n.use(initReactI18next).init({
     resources,
-    lng: 'en',  //default language
+    lng: localStorage.getItem('language') ? localStorage.getItem('language') : 'en',
     interpolation: {
       escapeValue: false, 
     },
+    //because t("...") always return strings but i want to return objects so i add this line:
+    returnObjects: true 
+    //becaue we have in translations products & category array
 })
 
 export default i18n

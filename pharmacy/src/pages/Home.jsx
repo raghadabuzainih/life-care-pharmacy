@@ -9,7 +9,7 @@ export const Home = () => {
             <img src="/images/pharmacy.jpg" alt="photo-of-pharmacy" />
             <div className="headers">
                 <h1>{t("home.title")}</h1>
-                <h2>{t("home.welcome")}<span>{t("home.community")}</span></h2>
+                <h2>{t("home.welcome")} <span>{t("home.community")}</span></h2>
             </div>
         </div>
     )

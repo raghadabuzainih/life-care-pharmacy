@@ -1,13 +1,13 @@
 
 import { useParams } from "react-router-dom"
-import arProducts from '../data/ar-products.json'
-import enProducts from '../data/en-products.json'
+import { useTranslation } from "react-i18next"
 import '../css/Item.css'
 
 //Item.jsx --> when clicking on item to show more info & grow image
 
-export const Item = ({lang}) => {
-    const products = lang == 'ar' ? arProducts : enProducts
+export const Item = () => {
+    const {t} = useTranslation()
+    const products = t("products")
     const { id } = useParams()
     //because id start from 1 & to access index in array --> id-1
     let clickedItem = products[id-1]

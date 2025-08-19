@@ -4,8 +4,9 @@ import { useLocation, useNavigate, Link } from 'react-router-dom'
 import { Form, Formik, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup' 
 import { useTranslation } from "react-i18next"
+import React from 'react'
 
-export const Login = ({isLoggin}) => {
+export const Login = ({setIsLoggedIn}) => {
     const location = useLocation()
     const navigate = useNavigate()
     const from = location.state?.from?.pathname || "/"
@@ -31,8 +32,14 @@ export const Login = ({isLoggin}) => {
             .required(t("login.validation.passwordRequired"))
     })
 
+    const [passwordIsHidden, setPasswordIsHidden] = React.useState(true)
+
+    function showOrHidePassword(){
+        setPasswordIsHidden(old => !old)   
+    }
+
     function handleSubmit(){
-        isLoggin(true)
+        setIsLoggedIn(true)
         navigate(from, { replace: true })
     }
 
@@ -51,8 +58,10 @@ export const Login = ({isLoggin}) => {
                     </div>
                     <div className='info'>
                         <label htmlFor="password">{t("login.password")}</label>
-                        <Field type="password" name="password"/>
-                        <button className='password-icon'></button>
+                        <Field type={passwordIsHidden ? 'password' : 'text'} name="password"/>
+                        <button type='button' className='password-icon' onClick={showOrHidePassword}>
+                            {passwordIsHidden ? <i className="fa-solid fa-eye"></i> : <i className="fa-solid fa-eye-slash"></i>}
+                        </button>
                         <ErrorMessage name='password' component="p" className='error'/>
                     </div>
                     <small>{t("login.noAccount")} <Link to="/signup">{t("login.register")}</Link></small>

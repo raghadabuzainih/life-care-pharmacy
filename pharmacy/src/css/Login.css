@@ -25,18 +25,3 @@
     width: 100%;
     margin-top: .4rem;
 }
-
-.password-icon{
-    position: relative;
-    font-size: small;
-    top: -2.1rem;
-    background-color: transparent;
-    justify-self: end;
-}
-
-.error{
-    font-size: small;
-    color: rgb(249, 91, 91);
-    margin-top: 0;
-    margin-bottom: 0;
-}
