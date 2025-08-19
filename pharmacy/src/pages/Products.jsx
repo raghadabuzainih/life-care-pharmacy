@@ -2,17 +2,12 @@ import { Product } from "../components/Product"
 import '../css/Products.css'
 import { Link } from "react-router-dom"
 import { useTranslation } from "react-i18next"
-import { useEffect, useState } from "react"
+import { Suspense, lazy } from "react"
+
+const LazyProducts = lazy(() => import("../components/LazyProducts"))
 
 export const Products = () => {
     const {t} = useTranslation()
-    const products = t("products")
-    let items = products.map(product => {
-        return <Product 
-                    key = {product.id}
-                    product = {product}
-               />
-    })
     let categories = t("categories")
     let linksToCategories= ['medications-and-treatment', 'vitamins-and-supplements'
                             ,'personal-care-products' ,'medical-devices']
@@ -25,25 +20,12 @@ export const Products = () => {
                 </Link>        
     })
 
-    const [visibleCount, setVisibleCount] = useState(8)
-
-    useEffect(()=>{
-        const handleScroll = () => {
-            if(window.innerHeight + window.scrollY >= document.body.offsetHeight - 2){
-                setVisibleCount(old => old + 4)
-            }
-        }
-
-        window.addEventListener('scroll', handleScroll)
-        return () => window.removeEventListener('scroll', handleScroll)
-    }, [])
-
     return(
         <div>
             <div className="categories">{categoriesLinks}</div>
-            <div className="products">
-                {items.slice(0, visibleCount).map(item=> item)}
-            </div>
+            <Suspense fallback={<p>Loading....</p>}>
+                <LazyProducts />
+            </Suspense>
         </div>
     )
 }
