@@ -8,6 +8,8 @@ Built with **React**, featuring multiple pages, form validations, protected rout
 - **Home**
 - **About**
 - **Products**
+- **Category Pages**: Each product category has its own page
+- **Item Details Page**: Clicking on an item opens a dedicated page with detailed information
 - **Contact Us**
 - **Sign Up**
 - **Login**
