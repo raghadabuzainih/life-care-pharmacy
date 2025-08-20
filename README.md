@@ -1,6 +1,6 @@
 # Pharmacy React Application
 
-A fully responsive **Pharmacy web application** built with **React**, featuring multiple pages, form validations, protected routes, dynamic routing, language selection, and performance optimization using lazy loading.
+Built with **React**, featuring multiple pages, form validations, protected routes, dynamic routing, language selection, and performance optimization using lazy loading.
 
 ## Features
 
